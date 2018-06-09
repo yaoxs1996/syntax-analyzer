@@ -1,22 +1,22 @@
-#ifndef SYNTAX_H_
-#define SYNTAX_H_
+#pragma once
 
 #include<cstdio>
 #include<cstring>
 #include<cstdlib>
 #include<string>
 
-#define MAX_COUNT 1024
-#define SIGN_UNDEFINED_ERR 1
-#define SIGN_REDEFINED_ERR 2
-#define SIGN_EXECUTE_ERR 3
-#define NO_SIGN_ERR 4
-#define SIGN_RESERVE_ERR 5
-#define NO_PARA_ERR 6
-
-class syntax
+class Syntax
 {
 private:
+	//各错误信号的常量定义
+	static const int MAX_COUNT = 1024;
+	static const int SIGN_UNDEFINED_ERR = 1;
+	static const int SIGN_REDEFINED_ERR = 2;
+	static const int SIGN_EXECUTE_ERR = 3;
+	static const int NO_SIGN_ERR = 4;
+	static const int SIGN_RESERVE_ERR = 5;
+	static const int NO_PARA_ERR = 6;
+
 	typedef enum{integer} types;
 
 	typedef struct
@@ -64,9 +64,11 @@ private:
 	FILE* procFile;
 
 public:
-	syntax();
-	~syntax();
+	//构造函数与析构函数
+	Syntax();
+	~Syntax();
 
+	//相关的处理函数
 	bool init(int argc, char* argv[]);
 	bool final();
 	bool error(int errNum, const char* sign);
@@ -78,6 +80,7 @@ public:
 	bool isProcExisted(char* vname);
 	int getNextToken();
 
+	//语法分析函数
 	void A();
 	void B();
 	void C();
@@ -106,5 +109,3 @@ public:
 	void Y();
 	void Z();
 };
-
-#endif

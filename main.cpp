@@ -1,12 +1,12 @@
-#include"syntax.h"
+#include "syntax.h"
 
 int main(int argc, char* argv[])
 {
-	syntax test;
-	if (test.init(argc, argv))
+	Syntax syntax;
+	if (syntax.init(argc, argv))
 	{
-		test.A();
-		test.final();
+		syntax.A();
+		syntax.final();
 	}
 
 	return 0;

@@ -1,10 +1,10 @@
-#include"syntax.h"
+#include"Syntax.h"
 
-void syntax::A()
+void Syntax::A()
 {
 	B();
 }
-void syntax::B()
+void Syntax::B()
 {
 	if (strcmp(input[pToken], "begin") == 0)
 	{
@@ -41,12 +41,12 @@ void syntax::B()
 		error(NO_SIGN_ERR, "end");
 	}
 }
-void syntax::C()
+void Syntax::C()
 {
 	D();
 	C_();
 }
-void syntax::C_()
+void Syntax::C_()
 {
 
 	if (strcmp(input[pToken], ";") == 0 && strcmp(input[getNextToken()], "integer") == 0)
@@ -66,7 +66,7 @@ void syntax::C_()
 	}
 
 }
-void syntax::D()
+void Syntax::D()
 {
 	if (strcmp(input[pToken + 1], "function") == 0)
 	{
@@ -77,7 +77,7 @@ void syntax::D()
 		E();
 	}
 }
-void syntax::E()
+void Syntax::E()
 {
 	if (strcmp(input[pToken], "integer") == 0)
 	{
@@ -119,18 +119,18 @@ void syntax::E()
 	}
 	F();
 }
-void syntax::F()
+void Syntax::F()
 {
 	G();
 }
-void syntax::G()
+void Syntax::G()
 {
 	if (kind[pToken] == 10)
 	{
 		nextToken();
 	}
 }
-void syntax::J()
+void Syntax::J()
 {
 	procRecord proBackup = currentProc;//备份当前过程，在匹配完G过程后恢复
 	if (strcmp(input[pToken], "integer") == 0)
@@ -209,11 +209,11 @@ void syntax::J()
 	L();
 	currentProc = proBackup;//匹配完G过程后恢复原过程
 }
-void syntax::K()
+void Syntax::K()
 {
 	F();
 }
-void syntax::L()
+void Syntax::L()
 {
 	if (strcmp(input[pToken], "begin") == 0)
 	{
@@ -260,12 +260,12 @@ void syntax::L()
 		}
 	}
 }
-void syntax::M()
+void Syntax::M()
 {
 	N();
 	M_();
 }
-void syntax::M_()
+void Syntax::M_()
 {
 	if (strcmp(input[pToken], ";") == 0)
 	{
@@ -283,7 +283,7 @@ void syntax::M_()
 		}
 	}
 }
-void syntax::N()
+void Syntax::N()
 {
 	if (strcmp(input[pToken], "read") == 0)
 	{
@@ -307,7 +307,7 @@ void syntax::N()
 		nextToken();
 	}
 }
-void syntax::O()
+void Syntax::O()
 {
 	if (strcmp(input[pToken], "read") == 0)
 	{
@@ -351,7 +351,7 @@ void syntax::O()
 		}
 	}
 }
-void syntax::P()
+void Syntax::P()
 {
 	if (strcmp(input[pToken], "write") == 0)
 	{
@@ -395,7 +395,7 @@ void syntax::P()
 		}
 	}
 }
-void syntax::Q()
+void Syntax::Q()
 {
 	if (!isVarExisted(input[pToken], currentProc.pname, false) && !isVarExisted(input[pToken], currentProc.pname, true) && !isProcExisted(input[pToken]))
 	{
@@ -416,12 +416,12 @@ void syntax::Q()
 	}
 	R();
 }
-void syntax::R()
+void Syntax::R()
 {
 	S();
 	R_();
 }
-void syntax::R_()
+void Syntax::R_()
 {
 	if (strcmp(input[pToken], "-") == 0)
 	{
@@ -438,12 +438,12 @@ void syntax::R_()
 		}
 	}
 }
-void syntax::S()
+void Syntax::S()
 {
 	T();
 	S_();
 }
-void syntax::S_()
+void Syntax::S_()
 {
 	if (strcmp(input[pToken], "*") == 0)
 	{
@@ -460,7 +460,7 @@ void syntax::S_()
 		}
 	}
 }
-void syntax::T()
+void Syntax::T()
 {
 	if (input[pToken][pChar] >= '0' && input[pToken][pChar] <= '9')
 	{
@@ -479,14 +479,14 @@ void syntax::T()
 		F();
 	}
 }
-void syntax::U()
+void Syntax::U()
 {
 	if (kind[pToken] == 11)
 	{
 		nextToken();
 	}
 }
-void syntax::W()
+void Syntax::W()
 {
 	if (strcmp(input[pToken], "if") == 0)
 	{
@@ -528,13 +528,13 @@ void syntax::W()
 	}
 	N();
 }
-void syntax::X()
+void Syntax::X()
 {
 	R();
 	Y();
 	R();
 }
-void syntax::Y()
+void Syntax::Y()
 {
 	if (strcmp(input[pToken], "<") == 0 || strcmp(input[pToken], "<=") == 0 || strcmp(input[pToken], ">") == 0 || strcmp(input[pToken], ">=") == 0 || strcmp(input[pToken], "=") == 0 || strcmp(input[pToken], "<>") == 0)
 	{
@@ -549,7 +549,7 @@ void syntax::Y()
 		}
 	}
 }
-void syntax::Z()
+void Syntax::Z()
 {
 	if (!isProcExisted(input[pToken]))
 	{

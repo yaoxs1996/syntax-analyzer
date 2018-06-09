@@ -1,9 +1,9 @@
-#include"syntax.h"
+#include"Syntax.h"
 
-syntax::syntax(){}
-syntax::~syntax(){}
+Syntax::Syntax(){}
+Syntax::~Syntax(){}
 
-bool syntax::init(int argc, char* argv[])
+bool Syntax::init(int argc, char* argv[])
 {
 	if (argc != 2)
 	{
@@ -95,7 +95,7 @@ bool syntax::init(int argc, char* argv[])
 	}
 }
 
-bool syntax::final()
+bool Syntax::final()
 {
 	for (int i = 0; i < varCount; i++)
 	{
@@ -129,7 +129,7 @@ bool syntax::final()
 	return val;
 }
 
-bool syntax::error(int errNum, const char* symbol)
+bool Syntax::error(int errNum, const char* symbol)
 {
 	char* errInfo;
 	std::string temp1 = "以保留字开头";
@@ -165,7 +165,7 @@ bool syntax::error(int errNum, const char* symbol)
 	return true;
 }
 
-void syntax::getPath(char* in, char* out)
+void Syntax::getPath(char* in, char* out)
 {
 	char* name;
 	name = strrchr(in, '\\');
@@ -175,7 +175,7 @@ void syntax::getPath(char* in, char* out)
 		strcpy(out, "");
 }
 
-void syntax::getFilename(char* in, char* out)
+void Syntax::getFilename(char* in, char* out)
 {
 	char* fullName;
 	char* extension;
@@ -187,7 +187,7 @@ void syntax::getFilename(char* in, char* out)
 		strncpy(out, in, strlen(in) - strlen(extension));
 }
 
-bool syntax::nextToken()
+bool Syntax::nextToken()
 {
 	pToken++;
 	pChar = 0;
@@ -203,7 +203,7 @@ bool syntax::nextToken()
 	return false;
 }
 
-bool syntax::nextChar()
+bool Syntax::nextChar()
 {
 	if (input[pToken][pChar] == '\0')
 	{
@@ -215,7 +215,7 @@ bool syntax::nextChar()
 
 }
 
-bool syntax::isVarExisted(char* vname, char* vproc, bool vkind)
+bool Syntax::isVarExisted(char* vname, char* vproc, bool vkind)
 {
 	for (int i = 0; i < varCount; i++)
 	{
@@ -230,7 +230,7 @@ bool syntax::isVarExisted(char* vname, char* vproc, bool vkind)
 	return false;
 }
 
-bool syntax::isProcExisted(char* vname)
+bool Syntax::isProcExisted(char* vname)
 {
 	for (int i = 0; i < varCount; i++)
 	{
@@ -245,7 +245,7 @@ bool syntax::isProcExisted(char* vname)
 	return false;
 }
 
-int syntax::getNextToken()
+int Syntax::getNextToken()
 {
 	int pNextToken = pToken + 1;
 	while (strcmp(input[pNextToken], "EOLN") == 0)
